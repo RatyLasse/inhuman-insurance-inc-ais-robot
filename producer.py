@@ -1,4 +1,3 @@
-import requests
 from robocorp import workitems
 from robocorp.tasks import task
 from RPA.HTTP import HTTP
