@@ -42,10 +42,6 @@ def consume_traffic_data():
     Inhuman Insurance, Inc. Artificial Intelligence System automation.
     Consumes traffic data work items.
     """
-    process_traffic_data()
-
-
-def process_traffic_data():
     for item in workitems.inputs:
         traffic_data = item.payload["traffic_data"]
         if len(traffic_data["country"]) == 3:
@@ -56,8 +52,14 @@ def process_traffic_data():
                 item.fail(
                     exception_type="APPLICATION",
                     code="TRAFFIC_DATA_POST_FAILED",
-                    message=return_json["message"]
+                    message=return_json["message"],
                 )
+        else:
+            item.fail(
+                exception_type="BUSINESS",
+                code="INVALID_TRAFFIC_DATA",
+                message=item.payload,
+            )
 
 
 def post_traffic_data_to_sales_system(traffic_data):
@@ -72,20 +74,16 @@ def load_traffic_data_as_table():
 
 
 def filter_and_sort_traffic_data(data):
-    rate_key = RATE_KEY
     max_rate = 5.0
-    gender_key = GENDER_KEY
     both_genders = "BTSX"
-    year_key = YEAR_KEY
-    table.filter_table_by_column(data, rate_key, "<", 5.0)
-    table.filter_table_by_column(data, gender_key, "==", both_genders)
-    table.sort_table_by_column(data, year_key, False)
+    table.filter_table_by_column(data, RATE_KEY, "<", max_rate)
+    table.filter_table_by_column(data, GENDER_KEY, "==", both_genders)
+    table.sort_table_by_column(data, YEAR_KEY, False)
     return data
 
 
 def get_latest_data_by_country(data):
-    country_key = COUNTRY_KEY
-    data = table.group_table_by_column(data, country_key)
+    data = table.group_table_by_column(data, COUNTRY_KEY)
     latest_data_by_country = []
     for group in data:
         first_row = table.pop_table_row(group)
