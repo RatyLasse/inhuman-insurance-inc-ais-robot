@@ -1,20 +1,8 @@
-# Template: Python - Minimal
+# Inhuman Insurance, Inc. Artificial Intelligence System (IIIAIS) Robot
 
-This template leverages the new Python open-source structure [robo](https://github.com/robocorp/robo), the [libraries](https://github.com/robocorp/robo#libraries) from to same project as well.
-The full power of [rpaframework](https://github.com/robocorp/rpaframework) is also available for you on Python as a backup while we implement new Python libraries.
+Collects the lowest road traffic fatality rates globally using an API and submits them to an insurance sales system for selling outrageously over-priced insurances to countries with the lowest fatality rate.
 
-The template provides you with the basic structure of a Python project: logging out of the box and controlling your tasks without fiddling with the base Python stuff. The environment contains the most used libraries, so you do not have to start thinking about those right away. 
-
-👉 After running the bot, check out the `log.html` under the `output` -folder.
-
-The template here is essentially empty, leaving you with a canvas to paint on.
-
-Do note that with Robocorp tooling you:
-- Do NOT need Python installed
-- Should NOT be writing `pip install..`; the [conda.yaml](https://github.com/robocorp/template-python/blob/master/conda.yaml) is here for a reason.
-- You do not need to worry about Python's main -functions and, most importantly, the logging setup
-
-🚀 Now, go get'em
+This is based on a Robocorp Python certification Level III course: https://robocorp.com/docs/courses/work-data-management-python
 
 For more information, do not forget to check out the following:
 * [Robocorp Documentation -site](https://robocorp.com/docs)
